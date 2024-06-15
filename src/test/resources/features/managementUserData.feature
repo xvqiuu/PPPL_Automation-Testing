@@ -1,5 +1,10 @@
 Feature: Management User Data
 
+  Background: User Logged in as Admin
+    Given user is on the login page
+    When the user enters valid credentials as "admin@mail.com" and "11111111"
+    Then the user is redirected to the "admin" dashboard page
+
   Scenario: See list of users
     Given a web browser is at the Dashboard Admin Panel MWCC
     When the users clicks the Data User on the side menu
