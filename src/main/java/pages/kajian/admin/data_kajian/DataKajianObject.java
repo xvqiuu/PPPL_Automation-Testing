@@ -1,21 +1,21 @@
-package pages.admin.data_kajian;
+package pages.kajian.admin.data_kajian;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AdminDataKajianObject {
+public class DataKajianObject {
     WebDriver driver;
 
-    public By getTableDataKajian() {
-        return By.xpath("//table[@id='datatablesSimple']");
-    }
-
-    public AdminDataKajianObject(WebDriver driver) {
+    public DataKajianObject(WebDriver driver) {
         this.driver = driver;
     }
 
     public By getTitleDataKajian() {
         return By.xpath("//*[contains(text(), 'Manajemen Kajian')]");
+    }
+
+    public By getTableDataKajian() {
+        return By.xpath("//table[@id='datatablesSimple']");
     }
 
     public By getButtonTambahDataKajian() {
@@ -29,6 +29,4 @@ public class AdminDataKajianObject {
     public By getSearchResult(String keyword) {
         return By.xpath("//td[contains(text(), '" + keyword + "')]");
     }
-
-
 }
