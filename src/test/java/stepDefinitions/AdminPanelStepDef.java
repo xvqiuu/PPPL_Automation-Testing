@@ -7,6 +7,8 @@ import io.cucumber.java.en.When;
 import org.junit.BeforeClass;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeOptions;
 import pages.admin.dasboard.AdminDashboardPage;
 import pages.admin.data_kajian.AdminDataKajianPage;
 import pages.admin.data_user.AdminDataUserPage;
@@ -14,6 +16,13 @@ import pages.admin.history_download.AdminHistoryDownloadPage;
 import pages.admin.history_login.AdminHistoryLoginPage;
 import pages.admin.history_upload.AdminHistoryUploadPage;
 import pages.admin.kategori_kajian.KategoriKajianPage;
+import pages.kajian.read.detail_kajian_versi_baru.DetailKajianVersiBaruPage;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class AdminPanelStepDef {
     static WebDriver driver;
@@ -24,6 +33,7 @@ public class AdminPanelStepDef {
     static AdminHistoryLoginPage historyLogin;
     static AdminHistoryUploadPage historyUpload;
     static KategoriKajianPage kategoriKajian;
+    static DetailKajianVersiBaruPage detailKajian;
 
     @BeforeClass
     public static void setupDriver() {
@@ -48,6 +58,9 @@ public class AdminPanelStepDef {
         }
         if (kategoriKajian == null) {
             kategoriKajian = new KategoriKajianPage(driver);
+        }
+        if (detailKajian == null) {
+            detailKajian = new DetailKajianVersiBaruPage(driver);
         }
 
         Hooks.test.info("Setup Driver on AdminPanelStepDef");
@@ -287,7 +300,105 @@ public class AdminPanelStepDef {
         }
     }
 
+    @And("the user fill the search form in data kajian page with {string}")
+    public void theUserFillTheSearchFormInDataKajianPageWith(String keyword) {
+        try {
+            dataKajian.putSearchInput(keyword);
+            Hooks.test.pass("Fill the search form in data kajian page with " + keyword);
+        } catch (Exception e) {
+            Hooks.test.fail("Failed to fill the search form in data kajian page with " + keyword);
+        }
+    }
 
+    @Then("the user see the kajian with title {string} in the table")
+    public void theUserSeeTheKajianWithTitleInTheTable(String keyword) {
+        try {
+            dataKajian.isSearchResultVisible(keyword);
+            Hooks.test.pass("See the kajian with title " + keyword + " in the table");
+        } catch (Exception e) {
+            Hooks.test.fail("Failed to see the kajian with title " + keyword + " in the table");
+        }
+    }
+
+    @And("the user click on the {string} button in the data kajian table")
+    public void theUserClickOnTheButtonInTheDataKajianTable(String button) {
+        try {
+            switch (button.toLowerCase()) {
+                case "detail":
+                    dataKajian.clickButtonDetailKajian();
+                    break;
+                case "hapus":
+                    dataKajian.clickButtonDeleteKajian();
+                    break;
+                case "tambah":
+                    dataKajian.clickButtonTambahDataKajian();
+                    break;
+            }
+            Hooks.test.pass("Click on the " + button + " button in the data kajian table");
+        } catch (Exception e) {
+            Hooks.test.fail("Failed to click on the " + button + " button in the data kajian table");
+        }
+    }
+
+    @Then("the user is redirected to the detail kajian page with keyword {string}")
+    public void theUserIsRedirectedToTheDetailKajianPageWithKeyword(String keyword) {
+        try {
+            boolean isContain = false;
+
+            for (String contain : dataKajian.getURL().split(" ")) {
+                if (contain.contains(keyword)) {
+                    isContain = true;
+                    break;
+                }
+            }
+
+            assert isContain;
+
+            Hooks.test.pass("Redirected to the detail kajian page with keyword " + keyword);
+        } catch (Exception e) {
+            Hooks.test.fail("Failed to redirect to the detail kajian page with keyword " + keyword);
+        }
+    }
+
+
+    @And("the user click on the {string} button in the detail kajian page")
+    public void theUserClickOnTheButtonInTheDetailKajianPage(String button) {
+        try {
+            switch (button.toLowerCase()) {
+                case "download":
+                    detailKajian.getDownloadKajianButton().click();
+                    break;
+                case "share":
+                    detailKajian.getShareKajianButton().click();
+                    break;
+            }
+            Hooks.test.pass("Click on the " + button + " button in the detail kajian page");
+        } catch (Exception e) {
+            Hooks.test.fail("Failed to click on the " + button + " button in the detail kajian page");
+        }
+    }
+
+    @Then("the user copied the kajian url")
+    public void theUserCopiedTheKajianUrl() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+
+            Hooks.test.pass("Copied the kajian url");
+        } catch (Exception e) {
+            Hooks.test.fail("Failed to copy the kajian url");
+        }
+    }
+
+    @Then("the user see the commit message in the detail kajian page")
+    public void theUserSeeTheCommitMessageInTheDetailKajianPage() {
+        try {
+            detailKajian.getKajianContentDifference().isDisplayed();
+            Hooks.test.pass("See the commit message in the detail kajian page");
+        } catch (Exception e) {
+            Hooks.test.fail("Failed to see the commit message in the detail kajian page");
+        }
+    }
 
 
 }
