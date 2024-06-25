@@ -1,19 +1,13 @@
 package stepDefinitions;
 
 import com.aventstack.extentreports.Status;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import pages.admin.dasboard.AdminDashboardPage;
 import pages.admin.data_user.AdminDataUserPage;
-import pages.login.LoginPage;
 
 import static org.junit.Assert.assertTrue;
 
