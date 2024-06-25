@@ -22,6 +22,10 @@ public class LoginObject {
         return By.xpath("//button[contains(text(), 'Masuk')]");
     }
 
+    public By getErrorMessage() {
+        return By.xpath("//li[normalize-space()='These credentials do not match our records.']");
+    }
+
     /**
      * TODO: Add more elements
      */

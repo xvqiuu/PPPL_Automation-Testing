@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
@@ -24,7 +25,7 @@ public class Hooks {
 //        System.setProperty("webdriver.edge.driver", "D:\\Download Program\\edgedriver_win64\\msedgedriver.exe");
 
         driver.manage().window().maximize();
-        test = extent.createTest("Setup Driver & Open Browser");
+        test = extent.createTest("PPPL Testing PAD2");
     }
 
     public static WebDriver getDriver() {
@@ -40,7 +41,8 @@ public class Hooks {
             driver.quit();
         }
 
-        test.log(Status.INFO, "Browser closed");
+        test.log(Status.INFO, "Close browser");
+
         extent.flush();
     }
 

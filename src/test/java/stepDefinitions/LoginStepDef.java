@@ -2,6 +2,8 @@ package stepDefinitions;
 
 import com.aventstack.extentreports.Status;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,6 +28,7 @@ public class LoginStepDef {
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
         setupDriver();
+
         String url = "https://dev.mwcc.masmoendigital.store/login";
         driver.get(url);
 
@@ -68,4 +71,13 @@ public class LoginStepDef {
         }
     }
 
+    @Then("the user sees an error message invalid email or password")
+    public void theUserSeesAnErrorMessageInvalidEmailOrPassword() {
+        try {
+            login.getErrorMessage();
+            Hooks.test.log(Status.PASS,"See an error message invalid email or password");
+        } catch (AssertionError e) {
+            Hooks.test.log(Status.FAIL,"Failed to see an error message invalid email or password");
+        }
+    }
 }

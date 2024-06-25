@@ -7,10 +7,10 @@ Feature: Public Login
 
     Examples:
       | email           | password  |
-      | jokor@mail.com  | 11111111  |
-      | joko@mail.com   | 111111112 |
+      | adminr@mail.com  | 11111111  |
+      | admin@mail.com   | 111111112 |
 
   Scenario: Login with valid credentials
     Given user is on the login page
-    When the user enters valid credentials as "joko@mail.com" and "11111111"
-    Then the user is redirected to the "public" dashboard page
+    When the user enters valid credentials as "admin@mail.com" and "11111111"
+    Then the user is redirected to the "admin" dashboard page

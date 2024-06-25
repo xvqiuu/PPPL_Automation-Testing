@@ -27,4 +27,7 @@ public class LoginPage {
         driver.findElement(loginObject.getButtonSubmit()).click();
     }
 
+    public void getErrorMessage() {
+        driver.findElement(loginObject.getErrorMessage()).isDisplayed();
+    }
 }
