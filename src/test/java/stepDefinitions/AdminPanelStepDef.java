@@ -230,6 +230,7 @@ public class AdminPanelStepDef {
     public void theUserFillTheFormInTambahKategoriWith(String keyword) {
         try {
             kategoriKajian.putNamaKategori(keyword);
+            kategoriKajian.clickSubmitButton();
             Hooks.test.pass("Fill the form in tambah kategori with " + keyword);
         } catch (Exception e) {
             Hooks.test.fail("Failed to fill the form in tambah kategori with " + keyword);

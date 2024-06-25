@@ -58,4 +58,8 @@ public class KategoriKajianPage extends AdminDashboardPage {
     public void putNamaKategori(String keyword) {
         driver.findElement(kategoriKajianObject.getNamaKategoriInput()).sendKeys(keyword);
     }
+
+    public void clickSubmitButton() {
+        driver.findElement(kategoriKajianObject.getSubmitButton()).click();
+    }
 }

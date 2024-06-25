@@ -49,5 +49,9 @@ public class KategoriKajianObject {
     public By getNamaKategoriInput() {
         return By.xpath("//input[@id='nama']");
     }
+
+    public By getSubmitButton() {
+        return By.xpath("//button[contains(text(), 'Simpan')]");
+    }
 }
 
