@@ -6,26 +6,21 @@ import org.openqa.selenium.WebDriver;
 public class LoginObject {
     WebDriver driver;
 
-    public LoginObject(WebDriver driver) {
+    public LoginObject (WebDriver driver){
         this.driver = driver;
     }
 
-    public By getTextInputEmail() {
+    public By getInputEmail() {
         return By.id("email");
     }
 
-    public By getTextInputPassword() {
+    public By getInputPassword() {
         return By.id("password");
     }
 
     public By getButtonSubmit() {
-        return By.xpath("//button[contains(text(), 'Masuk')]");
+        return By.xpath("/html/body/div/div/div/div[2]/form/div[4]/button");
     }
-
-    public By getErrorMessage() {
-        return By.xpath("//li[normalize-space()='These credentials do not match our records.']");
-    }
-
     /**
      * TODO: Add more elements
      */

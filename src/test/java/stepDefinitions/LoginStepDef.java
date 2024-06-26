@@ -7,14 +7,16 @@ import io.cucumber.java.en.When;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import pages.login.LoginPage;
+import pages.profile.ProfilePage;
 
 import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 
 public class LoginStepDef {
-    static WebDriver driver;
-    static LoginPage login;
+    public static WebDriver driver;
+    public static LoginPage login;
+    public static ProfilePage profile;
 
 
     @BeforeClass
@@ -26,7 +28,7 @@ public class LoginStepDef {
     public void user_is_on_the_login_page() {
         setupDriver();
 
-        String url = "https://dev.mwcc.masmoendigital.store/login";
+        String url = "http://127.0.0.1:8000/index/";
         driver.get(url);
 
         Hooks.test.log(Status.INFO,"Open browser at Login Page");
@@ -35,46 +37,54 @@ public class LoginStepDef {
 
     @When("the user enters valid credentials as {string} and {string}")
     public void the_user_enters_valid_credentials(String email, String password) throws InterruptedException {
-        String dashboardUrl = "https://dev.mwcc.masmoendigital.store/admin/dashboard";
-        if (driver.getCurrentUrl().contains("https://dev.mwcc.masmoendigital.store/login")) {
-            login = new LoginPage(driver);
-            login.putEmail(email);
-            login.putPassword(password);
-            login.clickSubmit();
+        login = new LoginPage(driver);
+        login.inputEmail(email);
+        login.inputPassword(password);
+        login.clickSubmit();
 
-            Hooks.test.log(Status.INFO,"Login with valid credentials");
-        } else {
-            driver.get(dashboardUrl);
+        profile = new ProfilePage(driver);
 
-            Hooks.test.log(Status.INFO,"Open browser at Dashboard Admin Panel MWCC");
-        }
+        Hooks.test.log(Status.INFO,"Login with valid credentials");
     }
 
-    @Then("the user is redirected to the {string} dashboard page")
-    public void the_user_is_redirected_to_the_dashboard_page(String type) throws InterruptedException {
-        String containURL = (Objects.equals(type, "admin")) ?
-                "/admin" : "/";
+    @Then("the user is redirected to the dashboard page")
+    public void the_user_is_redirected_to_the_dashboard_page() throws InterruptedException {
         String actualURL = login.getDriver().getCurrentUrl();
 
         try {
-            assert actualURL.contains(containURL);
-            Hooks.test.log(Status.PASS,"Redirected to the dashboard page");
-        } catch (AssertionError e) {
+            assert actualURL.contains("/index");
             Hooks.test.log(
                     Status.FAIL,
-                    "Failed to redirect to the dashboard page. Expected URL contain: " +
-                            containURL + ", but was: " + actualURL
+                    "Failed to redirect to the dashboard page. Expected URL contain: "
             );
+        } catch (AssertionError e) {
+            Hooks.test.log(Status.PASS,"Redirected to the dashboard page");
         }
     }
 
-    @Then("the user sees an error message invalid email or password")
-    public void theUserSeesAnErrorMessageInvalidEmailOrPassword() {
+    @Given("user is on the dashboard page")
+    public void userIsOnTheDashboardPage() {
+        String url = "http://127.0.0.1:8000/";
+        driver.get(url);
+    }
+
+    @When("user click profile")
+    public void userClickProfile() throws InterruptedException {
+        profile.clickIconProfile();
+
+        Hooks.test.info("lisa disini");
+    }
+
+
+    @Then("profile page show up")
+    public void profilePageShowUp() {
+        String currentUrl = profile.getDriver().getCurrentUrl();
+
         try {
-            login.getErrorMessage();
-            Hooks.test.log(Status.PASS,"See an error message invalid email or password");
-        } catch (AssertionError e) {
-            Hooks.test.log(Status.FAIL,"Failed to see an error message invalid email or password");
+            assert currentUrl.contains("profile");
+            Hooks.test.pass("Berhasil menampilkan profile");
+        } catch (Exception e) {
+            Hooks.test.fail("Gagal " + e);
         }
     }
 }

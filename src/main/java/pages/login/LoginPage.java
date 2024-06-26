@@ -15,19 +15,15 @@ public class LoginPage {
         return driver;
     }
 
-    public void putEmail(String email) {
-        driver.findElement(loginObject.getTextInputEmail()).sendKeys(email);
+    public void inputEmail(String email) {
+        driver.findElement(loginObject.getInputEmail()).sendKeys(email);
     }
 
-    public void putPassword(String password) {
-        driver.findElement(loginObject.getTextInputPassword()).sendKeys(password);
+    public void inputPassword(String password) {
+        driver.findElement(loginObject.getInputPassword()).sendKeys(password);
     }
 
     public void clickSubmit() {
         driver.findElement(loginObject.getButtonSubmit()).click();
-    }
-
-    public void getErrorMessage() {
-        driver.findElement(loginObject.getErrorMessage()).isDisplayed();
     }
 }

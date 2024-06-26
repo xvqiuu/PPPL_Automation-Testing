@@ -8,6 +8,7 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Hooks {
     public static WebDriver driver;
@@ -20,7 +21,7 @@ public class Hooks {
         if (driver != null) {
             return;
         }
-        driver = new EdgeDriver();
+        driver = new FirefoxDriver();
         // D:\Download Program\edgedriver_win64
 //        System.setProperty("webdriver.edge.driver", "D:\\Download Program\\edgedriver_win64\\msedgedriver.exe");
 
