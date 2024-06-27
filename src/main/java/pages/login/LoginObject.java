@@ -21,7 +21,5 @@ public class LoginObject {
     public By getButtonSubmit() {
         return By.xpath("/html/body/div/div/div/div[2]/form/div[4]/button");
     }
-    /**
-     * TODO: Add more elements
-     */
+
 }

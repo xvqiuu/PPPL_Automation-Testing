@@ -1,9 +1,6 @@
 package pages.profile;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.decorators.WebDriverDecorator;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -31,13 +28,24 @@ public class ProfilePage {
         driver.findElement(profileObject.getIconEditProfile()).click();
     }
 
+    public void clearName() {
+        driver.findElement(profileObject.getInputFirstName()).clear();
+        driver.findElement(profileObject.getInputLastName()).clear();
+    }
+
+    public void inputFirstName(String firstname) {
+        driver.findElement(profileObject.getInputFirstName()).sendKeys(firstname);
+    }
     public void inputLastName(String lastname) {
         driver.findElement(profileObject.getInputLastName()).sendKeys(lastname);
     }
 
-
     public void clickSave() {
         driver.findElement(profileObject.getButtonSave()).click();
+    }
+
+    public void clickLogout() {
+        driver.findElement(profileObject.getButtonLogout()).click();
     }
 }
 
