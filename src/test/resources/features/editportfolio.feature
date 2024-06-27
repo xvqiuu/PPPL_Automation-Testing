@@ -1,4 +1,4 @@
-Feature: Add Portfolio
+Feature: Logout
 
   Background:
     Given user is on the login page
@@ -7,8 +7,10 @@ Feature: Add Portfolio
     Given user is on the landing page
     When user click profile
     And profile page show up
+    Given user is on the profil page
 
-  Scenario: User add portfolio
-    Given user click add portfolio button
-    When user completes the required data
-    Then user click save portfolio button
+  Scenario: User edit portfolio
+    Given user click Edit Portfolio button
+    When user editing portfolio
+    And user click save edit portfolio button
+    Then profile page should be displayed

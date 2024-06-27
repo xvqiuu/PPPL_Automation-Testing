@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import com.aventstack.extentreports.Status;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,6 +24,11 @@ public class SearchLecturerStepDef {
 
     @Given("user clicks the Read More Button")
     public void userClicksTheReadMoreButton() {
+        setupDriver();
+
+        String url = "http://127.0.0.1:8000/";
+        driver.get(url);
+
         searchLecturerPage.clickReadMoreButton();
     }
 

@@ -1,8 +1,6 @@
 package pages.portfolio;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.comment.CommentObject;
 
 public class AddPortfolioPage {
     WebDriver driver;
@@ -16,14 +14,27 @@ public class AddPortfolioPage {
         return driver;
     }
 
-    public void uploadPicture(String ) {
-        driver.findElement(addPortfolioObject.getUploadPicture()).sendKeys(comment);
+    public void clickAddPortfolioButton() {
+        driver.findElement(addPortfolioObject.getAddPortfolioButton()).click();
+    }
+
+    public void uploadPicture(String picturePath ) {
+        driver.findElement(addPortfolioObject.getUploadPicture()).sendKeys(picturePath);
     }
 
     public void inputVideoTitle(String title) {
-        driver.findElement(commentObject.getButtonSend()).click();
+        driver.findElement(addPortfolioObject.getInputVideoTitle()).sendKeys(title);
     }
 
+    public void inputVideoUrl(String url) {
+        driver.findElement(addPortfolioObject.getInputVideoUrl()).sendKeys(url);
+    }
 
+    public void uploadPaper(String paperPath) {
+        driver.findElement(addPortfolioObject.getUploadPaper()).sendKeys(paperPath);
+    }
 
+    public void clickSavePortfolio() {
+        driver.findElement(addPortfolioObject.getSavePortfolioButton()).click();
+    }
 }

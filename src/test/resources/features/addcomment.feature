@@ -10,6 +10,6 @@ Feature: Add Comment
     Then portfolio details should be displayed
 
   Scenario: User add comments
-    Given user access porfolio details
+    Given user access portfolio details
     When user writes a comment
     Then user clicks Send button

@@ -11,14 +11,14 @@ public class SearchLecturerObject {
     }
 
     public By getReadMoreButton() {
-        return By.xpath("/html/body/div[2]/main/div[8]/div[1]/div[2]/button/p");
+        return By.xpath("/html/body/div[2]/main/div[8]/div[1]/div[2]/button");
     }
 
     public By getSearchLecturer() {
-        return By.id("lecturer");
+        return By.id("search");
     }
 
     public By getIconSearch() {
-        return By.xpath("//*[@id=\"search_bar\"]/div");
+        return By.xpath("//*[@id=\"search_bar\"]/div/button");
     }
 }

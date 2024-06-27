@@ -11,11 +11,11 @@ public class AddPortfolioObject {
     }
 
     public By getAddPortfolioButton() {
-        return By.xpath("/html/body/div[2]/main/div/div[2]/div/div/button");
+        return By.id("submit_portfolio");
     }
 
     public By getUploadPicture(){
-        return By.id("fileUploadBox1");
+        return By.id("fileInput1");
     }
 
     public By getInputVideoTitle(){
@@ -27,10 +27,10 @@ public class AddPortfolioObject {
     }
 
     public By getUploadPaper() {
-        return By.id("fileUploadBox");
+        return By.id("fileInput");
     }
 
     public By getSavePortfolioButton() {
-        return By.id("/html/body/div[2]/main/div/div/form/div[11]/button");
+        return By.xpath("/html/body/div[2]/main/div/div/form/div[11]/button");
     }
 }

@@ -11,10 +11,10 @@ public class CommentObject {
     }
 
     public By getInputComment() {
-        return By.xpath("/html/body/div[2]/main/main/div[8]/div/div[3]/form/input[2]");
+        return By.name("comment");
     }
 
     public By getButtonSend() {
-        return By.xpath("/html/body/div[2]/main/main/div[8]/div/div[4]/form/button");
+        return By.xpath("/html/body/div[2]/main/main/div[8]/div/div[5]/form/button");
     }
 }

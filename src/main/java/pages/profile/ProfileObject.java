@@ -17,6 +17,7 @@ public class ProfileObject {
     public By getIconEditProfile() {
         return By.xpath("/html/body/div[2]/main/div/div[1]/div[2]/button");
     }
+
     public By getInputFirstName() {
         return By.id("first-name");
     }
@@ -31,5 +32,9 @@ public class ProfileObject {
 
     public By getButtonLogout() {
         return By.xpath("/html/body/div[2]/main/div/form/button");
+    }
+
+    public By getButtonEditPortfolio() {
+        return By.xpath("/html/body/div[2]/main/div/div[2]/div/div/button");
     }
 }
