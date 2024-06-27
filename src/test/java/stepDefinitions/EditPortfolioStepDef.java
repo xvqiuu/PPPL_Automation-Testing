@@ -1,28 +1,40 @@
 package stepDefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import pages.comment.CommentPage;
 import pages.portfolio.EditPortfolioPage;
 import pages.profile.ProfilePage;
 
 public class EditPortfolioStepDef {
     public static WebDriver driver;
-    EditPortfolioPage editPortfolioPage;
-    ProfilePage profilePage;
+    public static EditPortfolioPage editPortfolioPage;
 
-    @Given("user click Edit Portfolio button")
-    public void userClickEditPortfolioButton() {
+    @BeforeClass
+    public static void setupDriver() {
         driver = Hooks.getDriver();
         editPortfolioPage = new EditPortfolioPage(driver);
 
         String url = "http://127.0.0.1:8000/user/";
         driver.get(url);
+    }
 
-        profilePage.clickEditPortfolio();
+    @Given("user click Edit Portfolio button")
+    public void userClickEditPortfolioButton() {
+        driver = new FirefoxDriver();
+        editPortfolioPage = new EditPortfolioPage(driver);
+
+        String url = "http://127.0.0.1:8000/user/";
+        driver.get(url);
+
+        editPortfolioPage.clickEditPortfolio();
     }
 
     @When("user editing portfolio")

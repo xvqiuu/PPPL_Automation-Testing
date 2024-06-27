@@ -13,12 +13,16 @@ public class EditPortfolioPage {
 
     public EditPortfolioPage(WebDriver driver) {
         this.driver = driver;
-        profileObject = new ProfileObject(driver);
+        editPortfolioObject = new EditPortfolioObject(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public void clickEditPortfolio() {
+        driver.findElement(editPortfolioObject.getButtonEditPortfolio()).click();
     }
 
     public void clearInput() {

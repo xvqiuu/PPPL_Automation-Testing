@@ -15,6 +15,6 @@ public class CommentObject {
     }
 
     public By getButtonSend() {
-        return By.xpath("/html/body/div[2]/main/main/div[8]/div/div[5]/form/button");
+        return By.id("kirim");
     }
 }

@@ -34,7 +34,4 @@ public class ProfileObject {
         return By.xpath("/html/body/div[2]/main/div/form/button");
     }
 
-    public By getButtonEditPortfolio() {
-        return By.xpath("/html/body/div[2]/main/div/div[2]/div/div/button");
-    }
 }

@@ -48,8 +48,5 @@ public class ProfilePage {
         driver.findElement(profileObject.getButtonLogout()).click();
     }
 
-    public void clickEditPortfolio() {
-        driver.findElement(profileObject.getButtonEditPortfolio()).click();
-    }
 }
 

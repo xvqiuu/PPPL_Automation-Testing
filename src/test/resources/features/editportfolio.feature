@@ -1,4 +1,4 @@
-Feature: Logout
+Feature: Edit Portfolio
 
   Background:
     Given user is on the login page

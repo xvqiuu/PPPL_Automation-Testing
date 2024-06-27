@@ -4,6 +4,7 @@ import com.aventstack.extentreports.Status;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import pages.login.LoginPage;
@@ -61,5 +62,4 @@ public class LoginStepDef {
             Hooks.test.log(Status.PASS,"Redirected to the landing page");
         }
     }
-
 }

@@ -10,6 +10,10 @@ public class EditPortfolioObject {
         this.driver = driver;
     }
 
+    public By getButtonEditPortfolio() {
+        return By.id("edit_portfolio");
+    }
+
     public By getInputVideoTitle() {
         return By.id("video-title");
     }

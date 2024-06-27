@@ -6,3 +6,4 @@ Feature: Login
     Then the user is redirected to the landing page
 
 
+
